@@ -96,11 +96,11 @@ export default {
                 content: ''
             },
             mesTitleColumns: [
-                // {
-                //     type: 'selection',
-                //     width: 50,
-                //     align: 'center'
-                // },
+                 {
+                     type: 'selection',
+                     width: 50,
+                     align: 'center'
+                 },
                 {
                     title: ' ',
                     key: 'title',
@@ -146,7 +146,7 @@ export default {
                 },
                 {
                     title: ' ',
-                    key: 'asread',
+                    key: 'hasread',
                     align: 'center',
                     width: 100,
                     render: (h, params) => {
