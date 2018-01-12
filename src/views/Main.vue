@@ -123,7 +123,7 @@ export default {
             let messageCount = 3;
             this.messageCount = messageCount.toString();
             this.checkTag(this.$route.name);
-            this.$store.commit('setMessageCount', 3);
+            this.$store.commit('setMessageCount', messageCount);
         },
         toggleClick () {
             this.shrink = !this.shrink;
@@ -165,7 +165,6 @@ export default {
     },
     watch: {
         '$route' (to) {
-            this.$store.commit('setCurrentPageName', to.name);
             let pathArr = util.setCurrentPath(this, to.name);
             if (pathArr.length > 2) {
                 this.$store.commit('addOpenSubmenu', pathArr[1].name);
@@ -182,7 +181,6 @@ export default {
     },
     created () {
         // 显示打开的页面的列表
-        this.$store.commit('setOpenedList');
     }
 };
 </script>
