@@ -4,9 +4,11 @@
 
 <template>
     <Card>
-        <table-search-form></table-search-form>
-        <table-operator></table-operator>
-        <Row class="margin-top-16">
+        <table-search-form :fields="searchFields"></table-search-form>
+        <Row>
+            <Button type="primary"> <Icon type="plus"></Icon> 新建</Button>
+        </Row>
+        <Row class="margin-top-medium">
             <Table border :columns="columns" :data="data"></Table>
         </Row>
     </Card>
@@ -15,13 +17,11 @@
 <script>
 import data from './data/data';
 import tableSearchForm from '../my-components/table-extention/table-search-form.vue';
-import tableOperator from '../my-components/table-extention/table-operator.vue';
 
 export default {
     name: 'page',
     components: {
-        tableSearchForm,
-        tableOperator
+        tableSearchForm
     },
     data() {
         return {
@@ -69,21 +69,33 @@ export default {
                                     }
                                 }
                             }, 'View'),
-                            h('Button', {
-                                props: {
-                                    type: 'error',
-                                    size: 'small'
-                                },
-                                on: {
-                                    click: () => {
-                                        this.remove(params.index)
+                            h('Poptip',
+                                {
+                                    props: {
+                                        confirm: true,
+                                        transfer: true,
+                                        title: '您确认删除这条内容吗？'
+                                    },
+                                    on: {
+                                        'on-ok': () => {
+                                            this.remove(params.index)
+                                        }
                                     }
-                                }
-                            }, 'Delete')
+                                },
+                                [
+                                    h('Button', {
+                                        props: {
+                                            type: 'error',
+                                            size: 'small'
+                                        }
+                                    }, 'Delete')
+                                ]
+                            )
                         ]);
                     }
                 }
             ],
+            searchFields: [],
             data: data
         }
     },
