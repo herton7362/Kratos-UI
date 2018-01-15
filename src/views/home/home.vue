@@ -3,7 +3,6 @@
 </style>
 <template>
     <div class="home-main">
-        <h1>Home</h1>
     </div>
 </template>
 

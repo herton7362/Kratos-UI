@@ -88,6 +88,16 @@ export const appRouter = [
         children: [
             { path: 'index', title: 'Page', name: 'page_index', component: resolve => { require(['@/views/page/page.vue'], resolve); } }
         ]
+    },
+    {
+        path: '/cashier',
+        icon: 'calculator',
+        title: '收银记账',
+        name: 'cashier',
+        component: Main,
+        children: [
+            { path: 'cashier', title: '收银记账', name: 'cashier_index', component: resolve => { require(['@/views/cashier/cashier.vue'], resolve); } }
+        ]
     }
 ];
 
